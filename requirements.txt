@@ -1,0 +1,10 @@
+pandas
+numpy
+json
+pillow
+boto3
+geopandas
+seaborn
+plotly
+matplotlib
+dotenv
