@@ -5,7 +5,7 @@ import { useState,useEffect ,useRef} from "react";
 import { BounceLoader } from 'react-spinners';
 
 
-const Server="http://localhost:5000"
+const Server="http://localhost:5000/"
 
 
 

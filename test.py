@@ -11,12 +11,9 @@ def receive_data():
 
     uploaded_file = request.files.get("file")
     if uploaded_file:
-        file_contents = uploaded_file.read()
- #       print(f"Received file: {uploaded_file.filename}")
-#        print(file_contents.decode('utf-8', errors='replace'))
+         file = uploaded_file.read()
     else:
         print("No file received.")
-
     return jsonify({
         "status": "success",
         "query": query,
@@ -50,23 +47,11 @@ def fetchjson_data():
 
 @app.route("/api/history", methods=["POST","GET"])
 def log_data():
-    #fill with the needed data for generation 
-#    print("Received query:", query)
+    #fill with the needed data for generation
     data=[1760007518,1760003518,1750907518,1750007518]
     data.sort()	
-    return jsonify(
-{
-        "history": data,
-        
-}
-
-
-)
-
-
-
-
-
+    return jsonify({
+        "history": data,}
 
 
 
