@@ -91,12 +91,14 @@ setLoading(1)
 }; 
 const ChatDisplayArea = ({ isLoading, data }) => {
      const words = !data?.title
-    ? [{ text: "Start a new chat or upload a dataset", className: "text-base  mt-6 text-gray-400" }]
-    : [{ text: data.title, className: "text-base mt-6 text-blue-400" }];
+    ? [{ text: "Start a new chat or upload a dataset", className: "text-base   text-gray-400" }]
+    : [{ text: data.title, className: "text-base  text-blue-400" }];
 
   return (
-    <div className="chat-display-area p-6 flex flex-col ">
-      <div className=" h-screen w-full flex items-center justify-center p-5 rounded-xl   flex-1 min-h-0">
+    <div className="bg-[#2c2c2c] rounded-xl object-contain  justify-center flex flex-col items-center gap-2 w-full h-full">
+     
+<div className='flex flex-col gap-0  '>
+   <div className=" h-screen w-full flex items-center justify-center  rounded-xl   flex-1 min-h-0">
         {isLoading ? (
           <BounceLoader />
         ) : !data?.url ? (
@@ -113,15 +115,18 @@ const ChatDisplayArea = ({ isLoading, data }) => {
           </svg>
         ) : ( 
             <img
-              className="w-full max-h-[90vh] cursor-target rounded-4xl border-20 border-[#322e3a] object-contain"
+              className="h-full w-full max-h-[80vh] max-w-[80vw] cursor-target rounded-4xl border-20 border-[#2e3036]  "
               src={data.url}
               alt={data.title || "img"}
             /> 
         )}
-      </div>
-  <TypewriterEffectSmooth key={data?.title || "default"} words={words} />
+      </div> 
+      <p className='p-5 text-center'>{data.title}</p>
 
-    
+      
+</div>
+
+
     </div>
   );
 };
