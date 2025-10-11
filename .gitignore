@@ -44,8 +44,4 @@ yarn-error.log*
 Thumbs.db
 
 
-llm.py
-<<<<<<< HEAD
-=======
-
->>>>>>> be494b9 (add gitignore)
+*.py
