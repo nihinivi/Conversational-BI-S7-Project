@@ -14,6 +14,10 @@ function App() {
   sparkCount={12}
   duration={400}
 >
+    <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={true}
+      />
     <div className="App">
    
       <ChatInterface />

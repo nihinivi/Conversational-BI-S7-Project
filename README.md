@@ -30,13 +30,17 @@ npm install
 ```
 python test.py
 ```
+<<<<<<< HEAD
 > Ensure required server code is added into the script
+=======
+> Ensure required server code or services are running.
+>>>>>>> 1528e6d (added readme)
 
 ### 6. Start the frontend
 ```
 npm run dev
 ```
-- The website should be accessible locally (usually at `http://localhost:3000`).
+- The website should be accessible locally (usually at `http://localhost:5173`).
 
 ## Project Structure
 
@@ -51,7 +55,4 @@ npm run dev
 - Python and Node.js must be installed before setup.  
 - Ensure server dependencies are running for `test.py`.
 
-## License
-
-Specify your license here (e.g., MIT, GPL, etc.).
 

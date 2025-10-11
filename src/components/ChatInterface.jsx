@@ -4,7 +4,7 @@ import { useState,useEffect ,useRef} from "react";
 
 import { BounceLoader } from 'react-spinners';
 
-
+import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
 const Server="http://localhost:5000/"
 
 
@@ -90,8 +90,12 @@ setLoading(1)
   );
 }; 
 const ChatDisplayArea = ({ isLoading, data }) => {
+     const words = !data?.title
+    ? [{ text: "Start a new chat or upload a dataset", className: "text-base  mt-6 text-gray-400" }]
+    : [{ text: data.title, className: "text-base mt-6 text-blue-400" }];
+
   return (
-    <div className="chat-display-area p-6 flex flex-col w-screern h-screen">
+    <div className="chat-display-area p-6 flex flex-col ">
       <div className=" h-screen w-full flex items-center justify-center p-5 rounded-xl   flex-1 min-h-0">
         {isLoading ? (
           <BounceLoader />
@@ -115,10 +119,9 @@ const ChatDisplayArea = ({ isLoading, data }) => {
             /> 
         )}
       </div>
+  <TypewriterEffectSmooth key={data?.title || "default"} words={words} />
 
-      <div className="bg-[#4b4948] w-full rounded-xl py-2 px-4 mt-6">
-        <p className="text-white">{data?.title}</p>
-      </div>
+    
     </div>
   );
 };

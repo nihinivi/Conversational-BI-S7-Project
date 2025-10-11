@@ -14,6 +14,9 @@ def receive_data():
          file = uploaded_file.read()
     else:
         print("No file received.")
+     
+
+
     return jsonify({
         "status": "success",
         "query": query,
@@ -52,7 +55,7 @@ def log_data():
     data.sort()	
     return jsonify({
         "history": data,}
-
+    )
 
 
 
