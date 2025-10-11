@@ -30,12 +30,7 @@ npm install
 ```
 python test.py
 ```
-<<<<<<< HEAD
 > Ensure required server code is added into the script
-=======
-> Ensure required server code or services are running.
->>>>>>> 1528e6d (added readme)
-
 ### 6. Start the frontend
 ```
 npm run dev
