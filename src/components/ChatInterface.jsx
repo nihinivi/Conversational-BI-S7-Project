@@ -1,10 +1,9 @@
-import React from 'react';
+ 
 import './ChatInterface.css';
 import { useState,useEffect ,useRef} from "react";
 
 import { BounceLoader } from 'react-spinners';
-
-import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
+ 
 const Server="http://localhost:5000/"
 
 
@@ -38,15 +37,15 @@ const UploadButton = ({ setFile }) => {
 };
 
 
+ 
 
-
-
-
-const ChatInputBar = ({setLoading,setData}) => {
+const ChatInputBar = ({setLoading,setData,data}) => {
 
 const handleSend = async () => {
   
   if (!query || !file) return alert("Enter query or upload a file");
+
+  if(data.url)return alert("Open a new chat please");
 setLoading(1)
   const formData = new FormData();
   formData.append("query", query);
@@ -234,7 +233,7 @@ const ChatInterface = () => {
   return (
     <div className="chat-interface-container ">
       <main className="main-content">
-        <ChatInputBar setLoading={setload} setData={setData} />
+        <ChatInputBar setLoading={setload} setData={setData} data={data} />
         <ChatDisplayArea isLoading={isLoading} data={data}/>
       </main> 
       <ChatHistorySidebar setChat={setData}/>

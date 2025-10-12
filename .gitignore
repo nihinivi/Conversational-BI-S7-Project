@@ -44,4 +44,4 @@ yarn-error.log*
 Thumbs.db
 
 
-*.py
+promptframework.py
