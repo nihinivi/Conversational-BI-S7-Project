@@ -4,7 +4,7 @@ import { useState,useEffect ,useRef} from "react";
 
 import { BounceLoader } from 'react-spinners';
 
-
+import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
 const Server="http://localhost:5000/"
 
 
@@ -24,7 +24,7 @@ const UploadButton = ({ setFile }) => {
 
   return (
     <>
-      <div onClick={handleUploadClick} className="button-placeholder cursor-pointer">
+      <div onClick={handleUploadClick} className="cursor-target button-placeholder cursor-pointer">
         Upload Dataset
       </div>
       <input
@@ -80,19 +80,25 @@ setLoading(1)
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Type your query here..."
-        className="input-field-placeholder"
+        className="input-field-placeholder  cursor-target"
       /> 
      <UploadButton setFile={setFile} />
-  <div onClick={handleSend} className="button-placeholder send-button cursor-pointer">
+  <div onClick={handleSend} className="button-placeholder cursor-target send-button cursor-pointer">
   Send
 </div>
     </div>
   );
 }; 
 const ChatDisplayArea = ({ isLoading, data }) => {
+     const words = !data?.title
+    ? [{ text: "Start a new chat or upload a dataset", className: "text-base   text-gray-400" }]
+    : [{ text: data.title, className: "text-base  text-blue-400" }];
+
   return (
-    <div className="chat-display-area p-6 flex flex-col w-screern h-screen">
-      <div className=" h-screen w-full flex items-center justify-center p-5 rounded-xl   flex-1 min-h-0">
+    <div className="bg-[#2c2c2c] rounded-xl object-contain  justify-center flex flex-col items-center gap-2 w-full h-full">
+     
+<div className='flex flex-col gap-0  '>
+   <div className=" h-screen w-full flex items-center justify-center  rounded-xl   flex-1 min-h-0">
         {isLoading ? (
           <BounceLoader />
         ) : !data?.url ? (
@@ -109,16 +115,18 @@ const ChatDisplayArea = ({ isLoading, data }) => {
           </svg>
         ) : ( 
             <img
-              className="w-full rounded-4xl border-20 border-[#322e3a] object-contain"
+              className="h-full w-full max-h-[80vh] max-w-[80vw] cursor-target rounded-4xl border-20 border-[#2e3036]  "
               src={data.url}
               alt={data.title || "img"}
             /> 
         )}
-      </div>
+      </div> 
+      <p className='p-5 text-center'>{data.title}</p>
 
-      <div className="bg-[#4b4948] w-full rounded-xl py-2 px-4 mt-6">
-        <p className="text-white">{data?.title}</p>
-      </div>
+      
+</div>
+
+
     </div>
   );
 };
@@ -141,7 +149,7 @@ const HistoryCard = ({ date, title, setActive, active,id ,setChat}) => {
   return (
     <div
       onClick={handleClick}
-      className={`flex flex-col justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 border 
+      className={`flex flex-col cursor-target justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 border 
         ${
           active==id
             ? "bg-gradient-to-r from-blue-600 to-blue-800 text-white border-transparent shadow-lg"
@@ -183,13 +191,13 @@ useEffect(() => {
       <div className="chat-history-list">
       
         <div className="chat-history-list flex flex-col gap-2">
-        <HistoryCard date="Current" setActive={setActive} setChat={setChat} active={active} id={0} title="" />
+        <HistoryCard  date="Current" setActive={setActive} setChat={setChat} active={active} id={0} title="" />
 
 
 
       
       {chats.map((chatTimestamp, index) => (
-  <HistoryCard
+  <HistoryCard 
     key={chatTimestamp}
     id={chatTimestamp}
    date={new Date(chatTimestamp*1000).toLocaleDateString("en-GB", {
@@ -206,7 +214,7 @@ useEffect(() => {
 
       </div>
       </div>
-      <div className="new-chat-button-placeholder" onClick={()=>{
+      <div className="new-chat-button-placeholder cursor-target" onClick={()=>{
         fetchChats()
         setActive(0)
         setChat({url:"",title:""})
@@ -224,7 +232,7 @@ const ChatInterface = () => {
   const [data, setData] = useState({ url: "", title: "" });
 
   return (
-    <div className="chat-interface-container">
+    <div className="chat-interface-container ">
       <main className="main-content">
         <ChatInputBar setLoading={setload} setData={setData} />
         <ChatDisplayArea isLoading={isLoading} data={data}/>

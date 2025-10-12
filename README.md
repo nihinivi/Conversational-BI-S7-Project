@@ -1,16 +1,53 @@
-# React + Vite
+# Conversational-BI-S7-Project Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Conversational-BI-S7-Project is a web application that integrates Python backend logic for Business Intelligence (BI) with a React frontend interface. It allows users to interact with BI data through conversational queries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
 
-## React Compiler
+### 1. Clone the repository
+```
+git clone https://github.com/nihinivi/Conversational-BI-S7-Project.git
+cd Conversational-BI-S7-Project
+```
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### 2. Install Python dependencies
+```
+pip install -r requirements.txt
+```
 
-## Expanding the ESLint configuration
+### 3. Install frontend dependencies
+```
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 4. Set up environment variables
+- Create a `.env` file in the project root.
+- Add any required configuration variables as per your setup.
+
+### 5. Run backend tests
+```
+python test.py
+```
+> Ensure required server code is added into the script
+### 6. Start the frontend
+```
+npm run dev
+```
+- The website should be accessible locally (usually at `http://localhost:5173`).
+
+## Project Structure
+
+- `test.py` – Python backend testing script.
+- `.env` – Environment configuration.
+- `requirements.txt` – Python dependencies.
+- `package.json` – Frontend dependencies and scripts.
+- `src/` – Frontend source code.
+
+## Notes
+
+- Python and Node.js must be installed before setup.  
+- Ensure server dependencies are running for `test.py`.
+
+
